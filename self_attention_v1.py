@@ -36,12 +36,12 @@ class SelfAttention_v1(nn.Module):
       #    attn_scores / keys.shape[-1] ** 0.5, dim = -1
       # )
 
-      context_len = attn_scores.shape[0]
+      # context_len = attn_scores.shape[0]
       # mask_simple = torch.tril(torch.ones(context_len, context_len))
       # mask_simple = attn_weights * mask_simple
       # print(mask_simple)
 
-      mask = torch.triu(torch.ones(context_len, context_len), diagonal=1)
+      # mask = torch.triu(torch.ones(context_len, context_len), diagonal=1)
       attn_scores.masked_fill_(self.mask.bool()[:num_tokens, :num_tokens], -torch.inf)
       attn_weights = torch.softmax(attn_scores / keys.shape[-1]**0.5, dim = -1)
       attn_weights = self.dropout(attn_weights) # Dropping 50% of the attention weights

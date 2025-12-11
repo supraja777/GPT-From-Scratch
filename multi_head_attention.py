@@ -11,6 +11,7 @@ class MultiHeadAttention(nn.Module):
                 for _ in range(num_heads)
             ]
         )
+        self.proj = nn.Linear(d_out*num_heads, d_out)
     
     def forward(self, x):
         head_outputs = []
@@ -18,7 +19,9 @@ class MultiHeadAttention(nn.Module):
         #     out = head(x)
         #     print(f"Head {idx + 1} output: \n", out)
         #     head_outputs.append(out)
-        return torch.cat([head(x) for head in self.heads], dim = -1)
+        context_vec = torch.cat([head(x) for head in self.heads], dim=-1)
+        return self.proj(context_vec)
+        # return torch.cat([head(x) for head in self.heads], dim = -1)
 
 # inputs = torch.tensor(
 #    [[0.43, 0.15, 0.89], # Your     (x^1)
