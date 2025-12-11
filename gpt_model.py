@@ -33,22 +33,22 @@ class GPTModel(nn.Module):
         logits = self.out_head(x)
         return logits
     
-torch.manual_seed(123)
-model = GPTModel(GPT_CONFIG_124M)
+# torch.manual_seed(123)
+# model = GPTModel(GPT_CONFIG_124M)
 
-batch = []
-txt1 = "Every effort moves you"
-txt2 = "Every day holds a"
+# batch = []
+# txt1 = "Every effort moves you"
+# txt2 = "Every day holds a"
 
-tokenizer = tiktoken.get_encoding("gpt2")
+# tokenizer = tiktoken.get_encoding("gpt2")
 
-batch.append(torch.tensor(tokenizer.encode(txt1)))
-batch.append(torch.tensor(tokenizer.encode(txt2)))
+# batch.append(torch.tensor(tokenizer.encode(txt1)))
+# batch.append(torch.tensor(tokenizer.encode(txt2)))
 
-batch = torch.stack(batch, dim = 0)
-print(batch)
+# batch = torch.stack(batch, dim = 0)
+# print(batch)
 
-out = model(batch)
-print("Batch :\n", batch)
-print("\n Output shape : ", out.shape)
-print(out)
+# out = model(batch)
+# print("Batch :\n", batch)
+# print("\n Output shape : ", out.shape)
+# print(out)
