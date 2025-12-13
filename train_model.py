@@ -103,14 +103,14 @@ tokenizer = tiktoken.get_encoding("gpt2")
 
 num_epochs = 10
 train_losses, val_losses, token_seen = train_model_simple(
-    model, 
-    train_loader, 
-    val_loader, 
-    optimizer, 
-    device,
-    num_epochs, 
-    start_context, 
-    tokenizer,
+    model = model, 
+    train_loader = train_loader, 
+    val_loader = val_loader, 
+    optimizer = optimizer, 
+    device = device,
+    num_epochs = num_epochs, 
+    start_context = start_context, 
+    tokenizer = tokenizer,
     eval_freq=5, 
     eval_iter=5
 )
