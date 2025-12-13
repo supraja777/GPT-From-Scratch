@@ -1,5 +1,10 @@
 from create_dataloader import create_dataloader_v1
+from gpt_model import GPTModel
 from gpt_config import GPT_CONFIG_124M
+import tiktoken
+
+import torch
+from calc_loss_batch import calc_loss_loader
 
 file_path = "the-verdict.txt"
 
@@ -31,11 +36,23 @@ val_loader = create_dataloader_v1(
     num_workers=0
 )
 
-print("Train loader: ")
+# print("Train loader: ")
 
-for x, y in train_loader:
-    print(x.shape, y.shape)
+# for x, y in train_loader:
+#     print(x.shape, y.shape)
 
-print("Valdation loader: ")
-for x, y in val_loader:
-    print(x.shape, y.shape)
+# print("Valdation loader: ")
+# for x, y in val_loader:
+#     print(x.shape, y.shape)
+
+model = GPTModel(GPT_CONFIG_124M)
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model.to(device)
+
+with torch.no_grad():
+    train_loss = calc_loss_loader(train_loader, model, device)
+    val_loss = calc_loss_loader(val_loader, model, device)
+
+print("Training loss: ", train_loss)
+print("Validation loss: ", val_loss)
