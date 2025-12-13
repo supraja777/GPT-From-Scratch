@@ -1,7 +1,7 @@
 import torch
 import tiktoken
 from gpt_model import GPTModel
-from gpt_config import GPT_CONFIG_124M
+from gpt_config_2 import GPT_CONFIG_124M
 
 def generate_text_simple(model, idx, max_new_tokens, context_size, temperature = 0.0, top_K = None, eos_id = None):
     for _ in range(max_new_tokens):
@@ -10,8 +10,8 @@ def generate_text_simple(model, idx, max_new_tokens, context_size, temperature =
             logits = model(idx_cond)
         
         logits = logits[:, -1, :]
-        if top_k is not None:
-            top_logits, _ = torch.topK(logits, top_k)
+        if top_K is not None:
+            top_logits, _ = torch.topK(logits, top_K)
             min_val = top_logits[:, -1]
             logits = torch.where(
                 logits < min_val,

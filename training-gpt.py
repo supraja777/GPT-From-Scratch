@@ -1,6 +1,6 @@
 from create_dataloader import create_dataloader_v1
 from gpt_model import GPTModel
-from gpt_config import GPT_CONFIG_124M
+from gpt_config_2 import GPT_CONFIG_124M
 import tiktoken
 
 import torch

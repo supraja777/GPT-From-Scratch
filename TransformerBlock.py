@@ -3,7 +3,7 @@ import torch.nn as nn
 from multi_head_attention import MultiHeadAttention
 from feedforward import FeedForward
 from layerNormalization import LayerNorm
-from gpt_config import GPT_CONFIG_124M
+from gpt_config_2 import GPT_CONFIG_124M
 
 class TransformerBlock(nn.Module):
     def __init__(self, cfg):

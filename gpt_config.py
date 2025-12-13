@@ -1,10 +1,16 @@
-GPT_CONFIG_124M = {
-    "vocab_size": 50257,   # number of words used by BPE tokenizer
-    "context_length": 256, # Maximum number of input tokens the model can handle via positional emb
-    "emb_dim": 768, # Represents the embedding size, transforming each token into a 768 dimensional space
-    "n_heads": 12, # Count of attention heads in multi-head attention mechanism
-    "n_layers": 12, # Number of transformer blocks
-    "drop_rate": 0.1, 
-    "qkv_bias": False
+CHOOSE_MODEL = "gpt2-small (124M)"
+INPUT_PROMPT = "Every effort moves"
+BASE_CONFIG = {
+    "vocab_size": 50257,          
+    "context_length": 1024,       
+    "drop_rate": 0.0,             
+    "qkv_bias": True              
+}
+model_configs = {
+    "gpt2-small (124M)": {"emb_dim": 768, "n_layers": 12, "n_heads": 12},
+    "gpt2-medium (355M)": {"emb_dim": 1024, "n_layers": 24, "n_heads": 16},
+    "gpt2-large (774M)": {"emb_dim": 1280, "n_layers": 36, "n_heads": 20},
+    "gpt2-xl (1558M)": {"emb_dim": 1600, "n_layers": 48, "n_heads": 25},
 }
 
+BASE_CONFIG.update(model_configs[CHOOSE_MODEL])

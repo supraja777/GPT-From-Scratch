@@ -3,7 +3,7 @@ import torch
 
 from generate_text import generate_text_simple
 from gpt_model import GPTModel
-from gpt_config import GPT_CONFIG_124M
+from gpt_config_2 import GPT_CONFIG_124M
 
 def text_to_token_ids(text, tokenizer):
     encoded = tokenizer.encode(text, allowed_special = {'<|endoftext|>'})

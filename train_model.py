@@ -1,8 +1,8 @@
 from calc_loss_batch import calc_loss_batch, calc_loss_loader
-from Utility import text_to_token_ids, token_ids_to_text
+from encoding_and_decoding_tokens import text_to_token_ids, token_ids_to_text
 from generate_text import generate_text_simple
 from gpt_model import GPTModel
-from gpt_config import GPT_CONFIG_124M
+from gpt_config_2 import GPT_CONFIG_124M
 from create_dataloader import create_dataloader_v1
 import tiktoken
 
@@ -102,16 +102,16 @@ start_context = "Every effort moves you"
 tokenizer = tiktoken.get_encoding("gpt2")
 
 num_epochs = 10
-train_losses, val_losses, token_seen = train_model_simple(
-    model = model, 
-    train_loader = train_loader, 
-    val_loader = val_loader, 
-    optimizer = optimizer, 
-    device = device,
-    num_epochs = num_epochs, 
-    start_context = start_context, 
-    tokenizer = tokenizer,
-    eval_freq=5, 
-    eval_iter=5
-)
+# train_losses, val_losses, token_seen = train_model_simple(
+#     model = model, 
+#     train_loader = train_loader, 
+#     val_loader = val_loader, 
+#     optimizer = optimizer, 
+#     device = device,
+#     num_epochs = num_epochs, 
+#     start_context = start_context, 
+#     tokenizer = tokenizer,
+#     eval_freq=5, 
+#     eval_iter=5
+# )
 

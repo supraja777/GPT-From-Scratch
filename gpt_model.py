@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 from TransformerBlock import TransformerBlock
 from layerNormalization import LayerNorm
-from gpt_config import GPT_CONFIG_124M
+from gpt_config_2 import GPT_CONFIG_124M
 import tiktoken
 
 class GPTModel(nn.Module):
